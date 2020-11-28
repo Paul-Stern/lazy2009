@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="main.css">
+</head>
+<body>
+	<div id="box">
+		<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Placeat ducimus facilis quis provident, sequi, ratione unde nulla assumenda natus corporis autem vel fuga totam repellat earum quidem veniam quaerat rem tempore voluptate? Consequatur distinctio commodi tempore accusantium! Delectus ut ipsum sint, corrupti est quasi quae, nulla molestias aspernatur consectetur eaque similique neque deserunt modi exercitationem culpa, aut perferendis reiciendis temporibus inventore soluta repudiandae. Alias distinctio itaque, aliquam ea nostrum aperiam voluptate delectus voluptates asperiores mollitia incidunt error magnam eius labore voluptatibus corrupti omnis possimus, quisquam, eos aliquid at autem laborum animi placeat. Officiis quas, labore delectus iusto, dolores inventore. Quisquam.</p>
+
+		<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis quod natus, enim vel reiciendis autem nulla ipsam ad est accusamus debitis sint maxime minus sunt dolore laudantium ut libero quaerat itaque omnis neque cupiditate! Reiciendis odit provident laboriosam voluptates praesentium officia harum obcaecati, aliquam nobis autem cupiditate corrupti ullam quas?</p>
+
+		<p>Lorem ipsum dolor sit amet, consectetur, adipisicing elit. Non quidem quos, minus porro vero repellendus, rem tenetur placeat sapiente voluptates facere, doloremque voluptatibus molestiae iure aspernatur natus recusandae commodi officiis fugiat dolorem nesciunt voluptas fuga. Ad aperiam iusto fugiat eveniet.</p>
+
+		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae odit distinctio, quibusdam consectetur, rem veritatis, amet nostrum suscipit veniam nobis numquam at placeat, nam vero unde ut reiciendis. Recusandae vitae beatae consectetur. Autem, suscipit quae at doloremque optio, qui, ducimus quibusdam, corrupti vitae rem dicta ab consectetur voluptas cumque consequuntur.</p>
+
+		<img class='blur' src="./img/blur/01.jpg" data-src="./img/01.jpg" alt="">
+	</div>
+</body>
+<script>
+	let counter = 0;
+	const getPars = function(element) {
+		console.log(element, element.getBoundingClientRect());
+		console.log('window.innerHeight: ', window.innerHeight);
+	}
+	const visible = function(element){
+		return element.getBoundingClientRect().top < (window.innerHeight - 150)
+	}
+	const lazyload = function() {
+		counter++;
+		let imgs = document.querySelectorAll('img.blur');
+			for (let i = 0; i < imgs.length; i++) {
+				if (visible(imgs[i])) {
+					let path = imgs[i].getAttribute('data-src');
+					imgs[i].setAttribute('src',path)
+				}
+			}
+		}
+		document.addEventListener('DOMContentLoaded', function() {
+			document.addEventListener('scroll', lazyload);
+		});
+	</script>
+	</html>

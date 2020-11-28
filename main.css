@@ -1,0 +1,14 @@
+body {
+	font-size: 22px;
+}
+#box {
+	width: 50%;
+	margin: auto;
+}
+img {
+	width: 100%;
+}
+
+/*.blur {
+	filter: blur(10px);
+}*/
